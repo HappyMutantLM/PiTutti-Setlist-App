@@ -37,10 +37,21 @@ struct SetlistDetailView: View {
                 )
             } else if let setlist = viewModel.setlist {
                 List {
-                    if let description = setlist.description, !description.isEmpty {
-                        Section {
+                    Section {
+                        if let description = setlist.description, !description.isEmpty {
                             Text(description).foregroundStyle(.secondary)
                         }
+                        HStack {
+                            Text("Setlist ID")
+                                .foregroundStyle(.secondary)
+                            Spacer()
+                            Text("\(setlistId)")
+                                .foregroundStyle(.secondary)
+                                .textSelection(.enabled)
+                        }
+                        .font(.caption)
+                    } footer: {
+                        Text("Use this with reader.py --setlist-id on the Pi to load this setlist on the panel.")
                     }
                     Section {
                         if setlist.items.isEmpty {
