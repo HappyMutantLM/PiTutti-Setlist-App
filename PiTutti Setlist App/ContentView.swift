@@ -2,20 +2,22 @@
 //  ContentView.swift
 //  PiTutti Setlist App
 //
-//  Created by leila mureebe on 9/3/26.
-//
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            NavigationStack {
+                LibraryView()
+            }
+            .tabItem { Label("Library", systemImage: "magnifyingglass") }
+
+            NavigationStack {
+                SetlistsView()
+            }
+            .tabItem { Label("Setlists", systemImage: "music.note.list") }
         }
-        .padding()
     }
 }
 
